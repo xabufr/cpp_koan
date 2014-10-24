@@ -8,10 +8,13 @@ TEST_CASE("01 - Classes definition in C++")
         int a;
     public:
         //This is a valid C++ syntax for members initialization
+
         MyClass(): a(1)
         {
             //You can also put here 'a = 1;'
         }
+        //Since C++0x (2011), it is possible to mark a method, a class or a member as deprecated, like this:
+        [[deprecated("Please use incrementBy(1) instead")]]
         void increment()
         {
             incrementBy(1);
@@ -24,6 +27,7 @@ TEST_CASE("01 - Classes definition in C++")
         {
             a+= value;
         }
+        //TODO operators, literals
     };
     //You can't access directly to member 'a'
     //REQUIRE(a == 1);

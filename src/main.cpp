@@ -6,7 +6,7 @@ int runTests(int argc, char *argv[], std::string const currentTestUnit);
 
 int main(int argc, char* argv[])
 {
-    const std::string currentTestUnit = "02";
+    const std::string currentTestUnit = "04";
     return runTests(argc, argv, currentTestUnit);
 }
 
