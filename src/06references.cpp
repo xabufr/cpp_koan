@@ -18,15 +18,20 @@ TEST_CASE("06 - References, Pointers")
     }
     WHEN("Make pointer point to variable")
     {
+        //Pointers MUST be initialized, or the program will receive SIGSEV
         pointer = &variable;
         THEN("pointer pointed value should be 5")
         {
             REQUIRE(*pointer == 5);
         }
+        THEN("Pointer should be evaluated as true")
+        {
+            CHECK(pointer);
+        }
     }
     WHEN("Pointer is nullptr")
     {
-        THEN("Pointer should be false")
+        THEN("Pointer should be evaluated as false")
         {
             CHECK_FALSE(pointer);
         }
