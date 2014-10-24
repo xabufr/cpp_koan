@@ -3,3 +3,6 @@ CMakeFiles
 Makefile
 bin
 cmake_install.cmake
+.idea/
+CMakeLists.txt.user/
+CMakeLists.txt.user
