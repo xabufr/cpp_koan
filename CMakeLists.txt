@@ -16,6 +16,7 @@ SET(source_files
     src/03templates.cpp
     src/04variadic_templates.cpp
     src/05static_assert.cpp
+    src/06references.cpp
     )
 
 add_executable(${PROJECT_NAME} ${SRC_LIST} ${source_files} )
