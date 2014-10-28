@@ -35,6 +35,7 @@ public:
     {
         m_isOwner = other.isOwner();
         m_isAssigned = true;
+        return *this;
     }
     bool isOwner() const
     {

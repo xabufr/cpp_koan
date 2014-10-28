@@ -18,6 +18,7 @@ SET(source_files
     src/05static_assert.cpp
     src/06references.cpp
     src/07move.cpp
+    src/08smart_ptr.cpp
     )
 
 add_executable(${PROJECT_NAME} ${SRC_LIST} ${source_files} )
