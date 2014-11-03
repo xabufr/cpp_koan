@@ -47,6 +47,34 @@ TEST_CASE("10 - Algorithms")
             for(auto value : array)
             {
                 REQUIRE(current <= value);
+                current = value;
+            }
+        }
+    }
+    WHEN("Swap")
+    {
+        int a = 5, b = 10;
+        std::swap(a,b);
+        THEN("Values are swapped")
+        {
+            REQUIRE(a == 10);
+            REQUIRE(b == 5);
+        }
+    }
+    WHEN("Use algorithms with C++11 Lambdas")
+    {
+        //This is a Lambda function
+        //We will see the complete syntax in the next chapter
+        std::sort(array.begin(), array.end(), [](int a, int b)->bool{
+            return b < a;
+        });
+        THEN("Array is really DESC sorted")
+        {
+            auto current = array.front();
+            for(auto value : array)
+            {
+                REQUIRE(current >= value);
+                current = value;
             }
         }
     }
