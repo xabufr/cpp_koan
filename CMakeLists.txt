@@ -21,6 +21,7 @@ SET(source_files
     src/08smart_ptr.cpp
     src/09containers.cpp
     src/10algorithm.cpp
+    src/11lambda.cpp
     )
 
 add_executable(${PROJECT_NAME} ${SRC_LIST} ${source_files} )
