@@ -27,7 +27,7 @@ TEST_CASE("08 - SmartPtr in C++0x and C++1y")
         (*rawPtr)++;
         THEN("myUniquePtr is modified")
         {
-            REQUIRE(*myUniquePtr == 21);
+            REQUIRE(*myUniquePtr == 20);
         }
     }
     WHEN("Test memory desalocation with unique_ptr")
@@ -41,7 +41,7 @@ TEST_CASE("08 - SmartPtr in C++0x and C++1y")
             THEN("Memory is free")
             {
                 ptr = std::unique_ptr<AClass>(new AClass(isSecondAllocated));
-                REQUIRE(isSecondAllocated == true);
+                REQUIRE(isSecondAllocated == false);
                 REQUIRE(isAllocated == false);
             }
         }
@@ -56,7 +56,7 @@ TEST_CASE("08 - SmartPtr in C++0x and C++1y")
                 //The memory is really OWNED by this unique_ptr
                 //This concept make appears who owns the memory
                 takeUniquePtrResponsability(std::move(ptr));
-                REQUIRE(isAllocated == false);
+                REQUIRE(isAllocated == true);
             }
         }
         WHEN("Unique ptr is destroyed")
@@ -65,7 +65,7 @@ TEST_CASE("08 - SmartPtr in C++0x and C++1y")
             THEN("Pointer is destroyed")
             {
                 ptr.~unique_ptr();
-                REQUIRE(isAllocated == false);
+                REQUIRE(isAllocated == true);
             }
         }
     }
@@ -93,7 +93,7 @@ TEST_CASE("08 - SmartPtr in C++0x and C++1y")
                     ptr_bis.reset();
                     THEN("Memory is desalocated")
                     {
-                        REQUIRE(isAllocated == false);
+                        REQUIRE(isAllocated == true);
                     }
                 }
             }
@@ -113,14 +113,14 @@ TEST_CASE("08 - SmartPtr in C++0x and C++1y")
                     ptr.reset();
                     THEN("Memory is not destroyed")
                     {
-                        REQUIRE(isAllocated == true);
+                        REQUIRE(isAllocated == false);
                     }
                 }
             }
             WHEN("Shared ptr expires")
             {
                 ptr.reset();
-                REQUIRE(isAllocated == false);
+                REQUIRE(isAllocated == true);
                 CHECK_FALSE(weak.lock());
             }
         }
